@@ -1,0 +1,5 @@
+int funcao(int *p){
+	//code
+}
+essa e passagem por referencia, porque estou passado a referencia.
+

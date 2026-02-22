@@ -1,0 +1,23 @@
+Armazena cadeia de caraceteres
+em c usa um vetor de caraceterres.
+char nome[15]; // vetor de 15 caracteres.
+
+Para ler uma string usa %s no scanf.
+scanf("%s", nome)
+no caso voce ta oferecendo a primeira psicao
+scanf("%s", nome + 1); 
+aqui to querendo armazena na segunda posicao
+
+no printf usamos o %s e deve fornecer uma posicao na memoria pro printf.
+sdasd
+printf("%s", nome); //abcdef
+printf("%s", nome + 1); //bcdef
+ele le ate espaco ou quebra de linha
+
+bibliotecas
+string.h
+
+strlen: retorna quantos caracteres existem entre posicao recebida e o prooximo \0
+
+char s[10] = "abcd"
+printf("%d", strlen(s); //imprime 4

@@ -1,0 +1,27 @@
+ponteiro e uma variavel que tem acesso a uma posicao de memoria especifica.
+entao o valor do ponteiro e a posicao de memoria
+
+declarar: <tipo> *<nome>;
+int *p;
+ou seja p e uma vaiavel de ponteiro para um inteiro;
+entao
+int x = 10;
+p = &x
+entao p agora aponta para o endereco da variavel inteiro x.
+Somar ou subtrair ponteiros altera a posicao de memoria que ele aponta
+Se somar 1 a um ponteiro que aponta para um inteiro ele vai apontar para a proxima regiao de memoria que contem um inteiro.
+
+Tamanho de tipos:
+sizeof(int) = 4;
+sizeof(float) = 4;
+Entao se eu somo um ponteiro de int ele pula 4 bytes para frente.
+
+int x =5;
+int *p;
+p = &x;
+printf("%d\n",p);
+aqui apenas o p isolado signfica que to querendo imprimir a posicao de memoria que ele aponta.
+Para saber o valor de p coloca o asterisco
+
+printf("%d\n", *p);
+

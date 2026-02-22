@@ -1,0 +1,14 @@
+para fazer funcoes recursiva deve ter:
+base -> valores que conhece a resposta
+fatoria:
+se n=0, n! = 1; <- quando n e zero, eu sei a resposta do fatorial isso e a base.
+se n>0, n! = n * (n-1)!
+
+int fatorial(int n){
+	//base
+	if(n == 0 ){
+		return 1;
+	} 
+	//passo n! = n*(n-1)!
+	return n*fatorial(n-1)
+}

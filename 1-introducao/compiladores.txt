@@ -1,0 +1,14 @@
+Compilar = reunir, juntar algo.
+Compilador e um programa que sintetiza algo. 
+
+No caso ele sintetiza um codigo de linguagem de programacao para um codigo mais proximo ao de maquina.
+
+código -> input:codigo-compilador -> executavel(codigo de baixo nivel)
+Na faze de compilar existe a analise lexiaca, sintatica e sematinca.
+léxica: o compilador divide o codigo em tokens e verifica se eta usando os simbolos da linguagem
+suponha `eu gosto de jogar` essa fras e esta lexicograficamente correta em portugues, mas `eu g@sto de jogar` ja nao é lexicograficamente correta.
+
+sintática: o compilador vai organziar as palavras em frases e verificar  se a estrutura do codigo segue as
+regras gramaticais  da linguagem
+sematica: verifica se a frase tem sentido logico.
+

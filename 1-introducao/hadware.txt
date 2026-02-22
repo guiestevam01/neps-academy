@@ -1,0 +1,1 @@
+ROM: e uma memoria onde so é possivel ler informacões

@@ -1,0 +1,7 @@
+1 - Escopo local: variavel declarada dentro de funcao
+estrutura de controle ou bloco de codigo e so pode ser usada nesse bloco.
+2 - Escopo global: declaradas fora de funcoes
+3 - Se tenho uma variavel local e global com mesmo nome a varaivel local tem prioridade no seu escopo, isso e chamado de shadowing.
+
+
+
