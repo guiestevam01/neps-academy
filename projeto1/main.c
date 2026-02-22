@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-
-
+#include <ctype.h>
 
 void limparBuffer()
 {
@@ -21,58 +20,58 @@ void menu(int *opt)
     limparBuffer();
 }
 
+float lerFloat(const char *mensagem)
+{
+    float valor;
+    while (1)
+    {
+        printf("%s", mensagem);
+        if (scanf("%f", &valor) == 1)
+        {
+            limparBuffer();
+            return valor;
+        }
+        else
+        {
+            printf("Entrada invalida! Digite um numero válido.\n");
+            limparBuffer();
+        }
+    }
+}
+
 void soma()
 {
-    float a;
-    float b;
-    printf("Digite o primeiro numero: ");
-    scanf("%f", &a);
-    printf("Digite o segundo numero: ");
-    scanf("%f", &b);
+    float a = lerFloat("Digite o primeiro numero: ");
+    float b = lerFloat("Digite o segundo numero: ");
     printf("Resultado: %.2f + %.2f = %.2f\n", a, b, a + b);
 }
 
 void sub()
 {
-    float a;
-    float b;
-    printf("Digite o primeiro numero: ");
-    scanf("%f", &a);
-    printf("Digite o segundo numero: ");
-    scanf("%f", &b);
-    printf("Resultado: %.2f - %.2f = %.2f\n", b, a, b - a);
+    float a = lerFloat("Digite o primeiro numero: ");
+    float b = lerFloat("Digite o segundo numero: ");
+    printf("Resultado: %.2f - %.2f = %.2f\n", a, b, a - b);
 }
 
 void mult()
 {
-    float a;
-    float b;
-    printf("Digite o primeiro numero: ");
-    scanf("%f", &a);
-    printf("Digite o segundo numero: ");
-    scanf("%f", &b);
+    float a = lerFloat("Digite o primeiro numero: ");
+    float b = lerFloat("Digite o segundo numero: ");
     printf("Resultado: %.2f * %.2f = %.2f\n", a, b, a * b);
 }
 
-void div()
+void divi()
 {
-    float a;
+    float a = lerFloat("Digite o primeiro numero: ");
     float b;
-    printf("Digite o primeiro numero: ");
-    scanf("%f", &a);
-    printf("Digite o segundo numero: ");
-    scanf("%f", &b);
-    limparBuffer();
+    do
+    {
+        b = lerFloat("Digite o segundo numero: ");
+        if (b == 0)
+            printf("Erro: Divisão por zero não é permitida. Tente novamente.\n");
+    } while (b == 0);
 
-    if (b == 0)
-    {
-        printf(" Erro: Divisão por zero não é permitida.\n");
-    
-    }
-    else
-    {
-        printf("Resultado: %.2f / %.2f = %.2f\n", a, b, a / b);
-    }
+    printf("Resultado: %.2f / %.2f = %.2f\n", a, b, a / b);
 }
 
 int main()
@@ -83,87 +82,38 @@ int main()
     menu(&opt);
     do
     {
-        if (opt == 1)
+        switch (opt)
         {
-            soma();
-            printf("Deseja realizar outra operação? (y/n): ");
-            scanf(" %c", &opcao);
-            if (opcao == 'n')
-            {
+            case 1: soma(); break;
+            case 2: sub(); break;
+            case 3: mult(); break;
+            case 4: divi(); break;
+            case 5: 
                 printf("Obrigado por usar a calculadora! Até a próxima.\n");
+                return 0;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
                 break;
-            }
-            else if (opcao == 's')
-            {
-                menu(&opt);
-            }
         }
-        if (opt == 2)
-        {
-            sub();
-            printf("Deseja realizar outra operação? (y/n): ");
-            scanf(" %c", &opcao);
-            limparBuffer();
 
-            if (opcao == 'n')
-            {
-                printf("Obrigado por usar a calculadora! Até a próxima.\n");
-                break;
-            }
-            else if (opcao == 'y')
-            {
-                menu(&opt);
-            }
-            else
-            {
-                while (opcao != 'y' && opcao != 'n')
-                {
-                    printf("Sua opcao esta incorreta, digite y para sim ou n pra nao: ");
-                    scanf(" %c", &opcao);
-                }
-            }
-        }
-        if (opt == 3)
+        printf("Deseja realizar outra operação? (s/n): ");
+        scanf(" %c", &opcao);
+        opcao = tolower(opcao);
+        limparBuffer();
+
+        while (opcao != 's' && opcao != 'n')
         {
-            mult();
-            printf("Deseja realizar outra operação? (y/n): ");
+            printf("Resposta inválida. Digite 's' para sim ou 'n' para não: ");
             scanf(" %c", &opcao);
-            if (opcao == 'n')
-            {
-                printf("Obrigado por usar a calculadora! Até a próxima.\n");
-                break;
-            }
-            else if (opcao == 's')
-            {
-                menu(&opt);
-            }
-        }
-        if (opt == 4)
-        {
-            div();
-            printf("Deseja realizar outra operação? (s/n): ");
-            scanf(" %c", &opcao);
-            if (opcao == 'n')
-            {
-                printf("Obrigado por usar a calculadora! Até a próxima.\n");
-                break;
-            }
-            else if (opcao == 's')
-            {
-                menu(&opt);
-                limparBuffer();
-            }
-        }
-        if (opt > 5 || opt < 5)
-        {
-            printf("Selecione uma operação:\n");
-            printf("1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n5. Sair\nOpção: ");
-            printf("\nSelecione a opcao correta mostrada acima: ");
-            scanf("%d", &opt);
+            opcao = tolower(opcao);
             limparBuffer();
         }
 
-    } while (opt != 5);
+        if (opcao == 's')
+            menu(&opt);
 
+    } while (opcao == 's');
+
+    printf("Obrigado por usar a calculadora! Até a próxima.\n");
     return 0;
 }
